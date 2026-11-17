@@ -68,6 +68,12 @@ With replicates: `Y, model, info = fit_aep(X, replicate=sample_labels)`.
 See [`notebooks/swiss_roll_tutorial.ipynb`](notebooks/swiss_roll_tutorial.ipynb) for a complete
 example. It generates a swiss roll in R^4, fits AEP and shows interactive plotly views.
 
+> **Note:** the plots in the tutorial are interactive plotly figures. They appear only when the
+> notebook runs in Jupyter, JupyterLab or VS Code, and the figure scripts load plotly.js from a
+> CDN, so an internet connection is needed. GitHub's notebook preview does not run these scripts
+> and shows the plot cells as empty. To see the plots, run the notebook (or re-run its cells;
+> in classic Jupyter, *File → Trust Notebook* also works).
+
 ### Parameters of `fit_aep`
 
 All parameters except `X_raw` are optional. The defaults work well in most cases; the ones most
