@@ -1,0 +1,38 @@
+[project]
+name = "aep"
+version = "0.1.0"
+description = "AEP: a smooth neural map from high-dimensional data to a 3D surface that preserves local geometry"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Dave Zhao" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scikit-learn>=1.3",
+    "torch>=2.1",
+    "pynndescent>=0.5",
+]
+
+[project.optional-dependencies]
+tutorial = ["plotly>=5.18", "jupyter", "ipykernel", "nbformat>=4.2"]
+dev = ["pytest>=8", "scipy>=1.10"]
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aep"]
+
+# uv users get CPU-only torch wheels; pip users get the default torch build
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
